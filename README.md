@@ -20,5 +20,5 @@ Site em Angular 20 + Tailwind 3 inspirado na capa de *Rick and Morty*. Clique em
 
 ## Entregas
 - [CONCEITO.md](CONCEITO.md)
-- Moodboard: _link ou arquivo aqui_
-- Identidade visual: _link ou arquivo aqui_
+- Moodboard: 
+- Identidade visual: 
