@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { background: radial-gradient(ellipse at 50% 0, #14245a 0, #050a1e 60%) fixed; color: #e9ffe0; font-family: 'Trebuchet MS', system-ui, sans-serif; min-height: 100vh; }
+
+/* CSS próprio: portal girando (o Tailwind não cobre conic-gradient + animação) */
+.portal { border-radius: 50%; background: conic-gradient(from 0deg, #7CFF3F, #27d9e6, #0b3d1e, #7CFF3F);
+  box-shadow: 0 0 60px #7CFF3F, inset 0 0 40px #050a1e; animation: gira 6s linear infinite; }
+@keyframes gira { to { transform: rotate(360deg); } }
+
+/* Corpo humano: órgãos clicáveis no SVG e abertura do portal ao entrar num órgão */
+.organ { cursor: pointer; stroke: #7CFF3F; stroke-width: 2; transform-box: fill-box; transform-origin: center; transition: transform .2s, filter .2s; }
+.organ:hover, .organ:focus { transform: scale(1.18); filter: drop-shadow(0 0 8px #7CFF3F); outline: none; }
+.organ.visitado { stroke-width: 4; stroke: #27d9e6; }
+.abre-portal { animation: abre .9s cubic-bezier(.6, 0, .3, 1); }
+@keyframes abre { from { clip-path: circle(0% at 50% 20%); } to { clip-path: circle(150% at 50% 20%); } }
+
+/* Fallback de destruição: portal quebrado quando a API falha */
+.portal-quebrado { animation: treme .5s ease-in-out 2; box-shadow: 0 0 30px #ff2d2d66; }
+.portal-quebrado .portal { filter: grayscale(1) contrast(1.4); animation: gira 20s linear infinite, racha 1.2s steps(2, end) infinite; }
+@keyframes treme { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px) rotate(-1deg); } 75% { transform: translateX(6px) rotate(1deg); } }
+@keyframes racha { 50% { clip-path: polygon(0 0, 100% 0, 100% 45%, 55% 52%, 100% 100%, 0 100%); } }

@@ -1,0 +1,6 @@
+{
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.includeLanguages": { "typescript": "html" },
+  "editor.quickSuggestions": { "strings": "on" },
+  "editor.formatOnSave": false
+}
